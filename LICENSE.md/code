@@ -1,0 +1,92 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct {
+float real;
+float image;
+} complex;
+float real_ , image_;
+char* name[100];
+int order = 0;
+complex array[100];
+int main(void)
+{
+	//初始化指针数组
+	for(int i= 0; i<100;i++)
+		name[i] = "zero";
+	char command;
+	bool condition = true;
+	print("");
+	while(condition)
+	{
+		scanf("%c",command);
+		switch(command)
+		{
+			case 'c':{
+				fputs("please input the real part and the image part by order.",stdout);
+				scanf("%f %f",real_ ,image_);
+				printf("\nwhat do you want to use to store it?\n");//利用用户输入构建一个指向特定复数的指针
+				scanf("%s",name[order]);//use name array to store name of complex
+				array[order++] = Creatcomplex(real_ ,image_);//than creat a new complex and the order is as same as the name.
+				
+					 }
+			case 'a':{
+				printf("please input two complex's name that you have defined before.");
+					char * inputname[2];
+					complex num1, num2;
+					inputname[0] = "zero";inputname[1] = "zero";
+					scanf("%s%s",inputname[0],inputname[1]);
+					for (int i = 0,i<100,i++)
+					{
+						if ()
+					}
+					 }
+
+
+
+		}
+	}
+
+	
+}
+
+
+
+complex Creatcomplex(float real, float image)
+{
+	complex new_complex;
+	new_complex.real = real; new_complex.image = image;
+	return new_complex;
+
+}
+
+complex addcomplex(complex one, complex two)
+{
+	complex result;
+	result.real = one.real + two.real;
+	result.image = one.image + two.image;
+	return result;
+}
+complex subcomplex(complex one, complex two)
+{
+	complex result;
+	result.real = one.real - two.real;
+	result.image = one.image - two.image;
+	return result;
+}
+complex multicomplex(complex one, complex two)
+{
+	complex result;
+	result.real = one.real*two.real + (- one.image * two.image);
+	result.image = one.real*two.image + one.image* two.real;
+	return result;
+
+}
+complex dividcomplex(complex one, complex two)
+{
+	complex result, _two;
+	_two = two;
+	_two.image = - two.image;
+	result = multicomplex(one,_two)/multicomplex(two,_two);
+	return result;
+}
